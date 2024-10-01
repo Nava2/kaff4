@@ -68,7 +68,7 @@ xerial-snappy = "org.xerial.snappy:snappy-java:1.1.10.5"
 
 [plugins]
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
-dependencyanalysis = "com.autonomousapps.dependency-analysis:1.31.0"
+dependencyanalysis = "com.autonomousapps.dependency-analysis:2.1.1"
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 license = "com.jaredsburrows.license:0.9.7"
 nexus-publish = "io.github.gradle-nexus.publish-plugin:1.3.0"
