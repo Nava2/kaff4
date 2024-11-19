@@ -2,6 +2,7 @@ package net.navatwo.kaff4.rdf.io
 
 import jakarta.inject.Inject
 import net.navatwo.kaff4.rdf.RdfValueConverter
+import java.lang.IllegalArgumentException
 
 internal class RdfValueConverterProvider @Inject constructor(
   private val converters: Set<RdfValueConverter<*>>,
@@ -17,7 +18,8 @@ internal class RdfValueConverterProvider @Inject constructor(
   fun getConverter(clazz: Class<*>): RdfValueConverter<*> {
     return tryGetConcrete(clazz)
       ?: tryGetHierarchy(clazz)
-      ?: converters.first { it.matches(clazz) }
+      ?: converters.firstOrNull { it.matches(clazz) }
+      ?: throw IllegalArgumentException("Could not get converter for class: $clazz")
   }
 
   private fun tryGetHierarchy(clazz: Class<*>): RdfValueConverter<*>? {
